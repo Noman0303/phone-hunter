@@ -95,7 +95,7 @@ const toggleLoadingSpinner = (isLoading) => {
 
 // handle show all
 const handleShowAll = () =>{
-handleSearch(true)
+handleSearch(true);
 }
 
 // loadPhone()
