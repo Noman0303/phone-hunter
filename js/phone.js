@@ -1,4 +1,4 @@
-const loadPhone = async (searchText , isShowAll) =>{
+const loadPhone = async (searchText='13' , isShowAll) =>{
     const res = await fetch(`https://openapi.programming-hero.com/api/phones?search=${searchText}`);
     const data = await res.json();
     const phones = data.data;
@@ -49,7 +49,7 @@ const displayPhones = (phones,isShowAll) =>{
           <h3 class="card-title">${phone.brand} ${phone.phone_name}</h3>
           <p>${phone.slug}</p>
           <div class="card-actions justify-end">
-            <button onclick="handleShowDetails('${phone.slug}')" class="btn btn-primary">Show Details</button>
+            <button onclick="handleShowDetails('${phone.slug}'),show_details_modal.showModal()" class="btn btn-primary">Show Details</button>
           </div>
         </div>
         `;
@@ -68,7 +68,8 @@ const handleShowDetails = async (id) =>{
   console.log(id)
   //  load single phone data
   const res = await fetch (`https://openapi.programming-hero.com/api/phone/${id}`);
-  console.log (res);
+  const data = await res.json();
+  console.log(data)
 }
 
 // handle search button
@@ -98,4 +99,4 @@ const handleShowAll = () =>{
 handleSearch(true);
 }
 
-// loadPhone()
+loadPhone()
